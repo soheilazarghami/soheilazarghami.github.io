@@ -4,7 +4,7 @@
 
 وبسایت شخصی و حرفه‌ای دکتر سهیل ضرغامی، روانشناس بالینی متخصص در درمان وسواس فکری–عملی (OCD) و روانشناسی کودکان با نیازهای ویژه.
 
-🌐 **آدرس سایت:** [soheilazarghami.github.io](https://soheilazarghami.github.io)
+🌐 **آدرس سایت:** [soheilazarghami.com](https://soheilazarghami.com)
 
 ---
 
