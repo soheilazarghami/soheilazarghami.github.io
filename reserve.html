@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var m=document.cookie.match(/(^|;)\s*theme=([^;]+)/);if(m)document.documentElement.setAttribute('data-theme',m[2]);})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رزرو وقت – دکتر ضرغامی</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#3d7d6b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="دکتر ضرغامی">
+<link rel="apple-touch-icon" href="/icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f2ee;
+    --bg2: #ede9e3;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text2: #4a4a6a;
+    --accent: #3d7d6b;
+    --accent2: #2a5c4e;
+    --accent-light: #e8f4f0;
+    --border: #d8d4ce;
+    --nav-bg: rgba(245,242,238,0.95);
+    --shadow: 0 4px 24px rgba(61,125,107,0.10);
+    --shadow-lg: 0 12px 48px rgba(61,125,107,0.15);
+    --gold: #c9a96e;
+  }
+  [data-theme="dark"] {
+    --bg: #0f1a17;
+    --bg2: #162620;
+    --card: #1a2e28;
+    --text: #e8f4f0;
+    --text2: #9dbfb5;
+    --accent: #5aab93;
+    --accent2: #3d7d6b;
+    --accent-light: #1a2e28;
+    --border: #2a4038;
+    --nav-bg: rgba(15,26,23,0.97);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+    --gold: #d4b07a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s, color 0.4s;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: background 0.4s;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 70px; gap: 20px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+  .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .nav-logo-sub { font-size: 11px; color: var(--text2); font-weight: 400; }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; flex-wrap: nowrap; }
+  .nav-links a {
+    color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+    transition: color 0.2s, background 0.2s; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--accent); background: var(--accent-light); }
+  .nav-links a.active { color: var(--accent); background: var(--accent-light); font-weight: 600; }
+
+  .nav-cta {
+    background: var(--accent) !important; color: #fff !important;
+    border-radius: 10px !important; padding: 9px 16px !important;
+    font-weight: 600 !important; font-size: 13px !important;
+    transition: background 0.2s, transform 0.15s !important; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+  .nav-controls { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .theme-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1.5px solid var(--border); background: var(--card);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; transition: background 0.3s, border 0.3s; color: var(--text);
+  }
+  .theme-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    width: 38px; height: 38px; border-radius: 10px;
+    border: 1.5px solid var(--border); background: var(--card);
+    cursor: pointer; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .hamburger span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none; position: fixed; top: 70px; right: 0; left: 0; bottom: 0;
+    background: var(--nav-bg); backdrop-filter: blur(16px);
+    z-index: 999; overflow-y: auto; padding: 20px;
+    flex-direction: column; gap: 6px;
+    transform: translateX(100%); transition: transform 0.35s ease;
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav a {
+    display: block; padding: 13px 18px; border-radius: 12px;
+    color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500;
+    border: 1px solid var(--border); background: var(--card); transition: background 0.2s;
+  }
+  .mobile-nav a:hover { background: var(--accent-light); color: var(--accent); }
+  .mobile-cta {
+    background: var(--accent) !important; color: #fff !important;
+    border-color: var(--accent) !important; font-weight: 700 !important;
+    text-align: center; margin-top: 8px;
+  }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero {
+    min-height: 42vh; display: flex; align-items: center;
+    padding: 100px 24px 60px; position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 60%, var(--accent-light) 0%, transparent 70%),
+                radial-gradient(ellipse 30% 40% at 10% 20%, rgba(201,169,110,0.07) 0%, transparent 60%);
+  }
+  .page-hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 1; text-align: center;
+  }
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--text2); margin-bottom: 20px;
+  }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb-sep { color: var(--border); }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 14px;
+    color: var(--text);
+  }
+  .page-hero h1 span { color: var(--accent); }
+  .page-hero p { font-size: 16px; color: var(--text2); max-width: 560px; margin: 0 auto; line-height: 1.9; }
+
+  /* ─── SHARED ─── */
+  .container { max-width: 1200px; margin: 0 auto; }
+  section { padding: 72px 24px; }
+  .bg2 { background: var(--bg2); }
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px; text-transform: uppercase;
+    background: var(--accent-light); padding: 6px 18px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; color: var(--text); margin-bottom: 12px; }
+  .section-desc { font-size: 15px; color: var(--text2); max-width: 560px; margin: 0 auto; line-height: 1.9; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── STEPS ─── */
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: ''; position: absolute;
+    top: 44px; right: 12.5%; left: 12.5%;
+    height: 2px; background: linear-gradient(to left, var(--accent) 0%, var(--gold) 100%);
+    opacity: 0.25; z-index: 0;
+  }
+  .step-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px 20px; text-align: center;
+    box-shadow: var(--shadow); position: relative; z-index: 1;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .step-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .step-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-size: 18px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 16px rgba(61,125,107,0.3);
+  }
+  .step-icon { font-size: 28px; margin-bottom: 12px; }
+  .step-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .step-text { font-size: 13px; color: var(--text2); line-height: 1.8; }
+
+  /* ─── SESSION TYPES ─── */
+  .session-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 860px; margin: 0 auto; }
+  .session-card {
+    background: var(--card); border: 2px solid var(--border);
+    border-radius: 24px; padding: 36px 32px;
+    box-shadow: var(--shadow); transition: all 0.3s;
+    position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .session-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px; background: linear-gradient(to right, var(--accent), var(--gold));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .session-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .session-card:hover::after { opacity: 1; }
+  .session-badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 50px; margin-bottom: 16px;
+  }
+  .badge-green { background: var(--accent-light); color: var(--accent); }
+  .badge-gold  { background: rgba(201,169,110,0.12); color: var(--gold); }
+  .session-icon { font-size: 42px; margin-bottom: 16px; }
+  .session-title { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+  .session-desc { font-size: 14px; color: var(--text2); line-height: 1.9; margin-bottom: 22px; }
+  .session-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .session-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13.5px; color: var(--text2);
+  }
+  .session-features .check {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
+  }
+  .session-link {
+    display: inline-block; margin-top: 24px;
+    padding: 12px 24px; border-radius: 12px;
+    background: var(--accent); color: #fff;
+    text-decoration: none; font-size: 14px; font-weight: 700;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(61,125,107,0.25);
+  }
+  .session-link:hover { background: var(--accent2); transform: translateY(-2px); }
+
+  /* ─── CONTACT INFO ─── */
+  .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: start; }
+  .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 18px; padding: 22px 24px;
+    display: flex; align-items: center; gap: 18px;
+    box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .contact-card:hover { transform: translateX(-4px); box-shadow: var(--shadow-lg); }
+  .contact-icon-wrap {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .contact-label { font-size: 12px; color: var(--text2); margin-bottom: 4px; font-weight: 600; letter-spacing: 0.5px; }
+  .contact-value { font-size: 15px; font-weight: 700; color: var(--text); direction: ltr; text-align: right; }
+  .contact-value a { color: var(--accent); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  .map-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .map-placeholder {
+    background: linear-gradient(135deg, var(--accent-light) 0%, rgba(201,169,110,0.08) 100%);
+    height: 280px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+  .map-placeholder .map-pin { font-size: 48px; }
+  .map-placeholder p { font-size: 14px; color: var(--text2); text-align: center; line-height: 1.8; }
+  .map-footer { padding: 16px 20px; border-top: 1px solid var(--border); }
+  .map-footer p { font-size: 13px; color: var(--text2); line-height: 1.7; }
+  .map-footer strong { color: var(--text); }
+
+  /* ─── SCHEDULE STRIP ─── */
+  .schedule-strip {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 24px; padding: 36px 40px;
+    color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    box-shadow: 0 16px 48px rgba(61,125,107,0.28);
+    flex-wrap: wrap;
+  }
+  .schedule-info { flex: 1; min-width: 200px; }
+  .schedule-info h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .schedule-info p { font-size: 14px; opacity: 0.85; line-height: 1.8; }
+  .schedule-days { display: flex; gap: 10px; flex-wrap: wrap; }
+  .day-chip {
+    padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 600;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+    white-space: nowrap;
+  }
+  .day-chip.active { background: #fff; color: var(--accent2); }
+  .schedule-cta {
+    display: inline-block; padding: 14px 30px;
+    background: #fff; color: var(--accent2);
+    border-radius: 14px; font-size: 15px; font-weight: 800;
+    text-decoration: none; flex-shrink: 0;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .schedule-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+  /* ─── FAQ ─── */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .faq-item.open { box-shadow: var(--shadow-lg); border-color: var(--accent); }
+  .faq-q {
+    padding: 18px 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    font-size: 15px; font-weight: 600; color: var(--text);
+    user-select: none;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-arrow {
+    font-size: 12px; color: var(--accent); flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 22px;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
+  .faq-a p { font-size: 14px; color: var(--text2); line-height: 2; }
+
+  /* ─── INLINE CTA ─── */
+  .inline-cta {
+    background: var(--accent-light); border: 1px solid rgba(61,125,107,0.2);
+    border-radius: 20px; padding: 40px 36px; text-align: center;
+    margin-top: 48px;
+  }
+  .inline-cta p { font-size: 15px; color: var(--text2); margin-bottom: 20px; line-height: 1.8; }
+  .btn-primary {
+    display: inline-block; padding: 14px 32px; border-radius: 14px;
+    font-size: 15px; font-weight: 700; background: var(--accent); color: #fff;
+    text-decoration: none; font-family: 'Vazirmatn', sans-serif;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(61,125,107,0.3);
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(61,125,107,0.4); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 24px 24px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); }
+  .footer-brand-text { font-size: 14px; font-weight: 700; color: var(--text); }
+  .footer-brand-sub { font-size: 12px; color: var(--text2); }
+  .footer-info { font-size: 13px; color: var(--text2); text-align: center; line-height: 1.8; }
+  .footer-license { font-size: 12px; color: var(--text2); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { display: flex; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid::before { display: none; }
+    .session-grid { grid-template-columns: 1fr; max-width: 480px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .schedule-strip { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 56px 16px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 90px 16px 50px; }
+    .schedule-strip { padding: 28px 24px; }
+    .inline-cta { padding: 28px 20px; }
+    .contact-grid { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="/logo.webp" alt="لوگو" onerror="this.style.display='none'">
+      <div>
+        <div class="nav-logo-text">دکتر سهیلا ضرغامی</div>
+        <div class="nav-logo-sub">روانشناس – شیراز</div>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">صفحه اصلی</a>
+      <a href="index.html#services">خدمات</a>
+      <a href="index.html#about">درباره من</a>
+      <a href="index.html#tests">تست‌ها</a>
+      <a href="reserve.html" class="active">رزرو وقت</a>
+    </div>
+
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="تغییر تم" id="themeBtn">🌙</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="منو">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">🏠 صفحه اصلی</a>
+  <a href="index.html#services">خدمات تخصصی</a>
+  <a href="index.html#about">درباره من</a>
+  <a href="index.html#tests">تست‌های روانشناسی</a>
+  <a href="reserve.html" class="mobile-cta">📅 رزرو وقت</a>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb reveal">
+      <a href="index.html">خانه</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>رزرو وقت</span>
+    </div>
+    <span class="section-eyebrow reveal">نوبت‌دهی آنلاین</span>
+    <h1 class="reveal reveal-delay-1">رزرو <span>وقت مشاوره</span></h1>
+    <p class="reveal reveal-delay-2">
+      جلسات در محیطی کاملاً امن و محرمانه برگزار می‌شوند.
+      از طریق سامانه آنلاین، وقت خود را در اسرع وقت رزرو کنید.
+    </p>
+  </div>
+</div>
+
+<!-- ─── STEPS ─── -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">چطور؟</span>
+      <h2 class="section-title reveal">مراحل رزرو وقت</h2>
+      <p class="section-desc reveal">در چند گام ساده، وقت مشاوره خود را رزرو کنید</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">۱</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">انتخاب نوع جلسه</div>
+        <p class="step-text">نوع جلسه مورد نظرتان را انتخاب کنید: حضوری یا تلفنی</p>
+      </div>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">۲</div>
+        <div class="step-icon">📅</div>
+        <div class="step-title">انتخاب تاریخ و ساعت</div>
+        <p class="step-text">روز و ساعت مناسب خود را از تقویم موجود در سامانه انتخاب نمایید</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">۳</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">ثبت اطلاعات</div>
+        <p class="step-text">مشخصات و دلیل مراجعه خود را به صورت مختصر وارد کنید</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">۴</div>
+        <div class="step-icon">✅</div>
+        <div class="step-title">تأیید و حضور</div>
+        <p class="step-text">پس از تأیید رزرو، پیامک یادآوری دریافت کرده و در وقت مقرر حاضر شوید</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SESSION TYPES ─── -->
+<section class="bg2">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">انواع جلسات</span>
+      <h2 class="section-title reveal">نوع جلسه را انتخاب کنید</h2>
+      <p class="section-desc reveal">بسته به شرایط و نیاز خود، یکی از روش‌های زیر را انتخاب نمایید</p>
+    </div>
+    <div class="session-grid">
+      <div class="session-card reveal">
+        <span class="session-badge badge-green">پیشنهادی</span>
+        <div class="session-icon">🏥</div>
+        <div class="session-title">مشاوره حضوری</div>
+        <p class="session-desc">
+          جلسه چهره‌به‌چهره در مطب دکتر ضرغامی در شیراز.
+          مناسب‌ترین روش برای ارزیابی دقیق و درمان مؤثر.
+        </p>
+        <ul class="session-features">
+          <li><span class="check">✓</span> ارزیابی کامل با ابزارهای روانسنجی</li>
+          <li><span class="check">✓</span> محیط امن و کاملاً محرمانه</li>
+          <li><span class="check">✓</span> مناسب برای کودکان، نوجوانان و بزرگسالان</li>
+          <li><span class="check">✓</span> اجرای تست‌های روانشناختی</li>
+        </ul>
+        <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="session-link">
+          📅 رزرو وقت حضوری
+        </a>
+      </div>
+      <div class="session-card reveal reveal-delay-1">
+        <span class="session-badge badge-gold">منعطف</span>
+        <div class="session-icon">📞</div>
+        <div class="session-title">مشاوره تلفنی</div>
+        <p class="session-desc">
+          گفتگوی تخصصی از هر مکانی. مناسب برای مشاوره اولیه
+          یا افرادی که امکان حضور ندارند.
+        </p>
+        <ul class="session-features">
+          <li><span class="check">✓</span> بدون نیاز به حضور فیزیکی</li>
+          <li><span class="check">✓</span> انعطاف در زمان‌بندی</li>
+          <li><span class="check">✓</span> مناسب برای مشاوره اولیه</li>
+          <li><span class="check">✓</span> ارتباط مستقیم با دکتر</li>
+        </ul>
+        <a href="tel:+989333125447" class="session-link" style="background: var(--gold);">
+          📞 تماس برای هماهنگی
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SCHEDULE STRIP ─── -->
+<section>
+  <div class="container">
+    <div class="schedule-strip reveal">
+      <div class="schedule-info">
+        <h3>ساعات کاری مطب</h3>
+        <p>جلسات در روزهای کاری برگزار می‌شوند. برای اطلاع از ساعت دقیق، از سامانه نوبت‌دهی استفاده کنید.</p>
+      </div>
+      <div class="schedule-days">
+        <span class="day-chip active">شنبه</span>
+        <span class="day-chip active">یک‌شنبه</span>
+        <span class="day-chip active">دوشنبه</span>
+        <span class="day-chip active">سه‌شنبه</span>
+        <span class="day-chip active">چهارشنبه</span>
+        <span class="day-chip">پنج‌شنبه</span>
+        <span class="day-chip">جمعه</span>
+      </div>
+      <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="schedule-cta">
+        مشاهده ظرفیت
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT INFO ─── -->
+<section class="bg2" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">آدرس و تماس</span>
+      <h2 class="section-title reveal">اطلاعات تماس</h2>
+      <p class="section-desc reveal">برای هماهنگی بیشتر یا اطلاع از آدرس دقیق مطب با ما در تماس باشید</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card reveal">
+          <div class="contact-icon-wrap">📍</div>
+          <div>
+            <div class="contact-label">آدرس مطب</div>
+            <div class="contact-value">شیراز – بلوار پاسداران – حدفاصل کلاهدوز و فلاحی – ساختمان سارا و آیدا – طبقه ۳</div>
+          </div>
+        </div>
+        <div class="contact-card reveal reveal-delay-1">
+          <div class="contact-icon-wrap">📞</div>
+          <div>
+            <div class="contact-label">تلفن ثابت</div>
+            <div class="contact-value"><a href="tel:+987132346916">۰۷۱-۳۲۳۴۶۹۱۶</a></div>
+          </div>
+        </div>
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-icon-wrap">📱</div>
+          <div>
+            <div class="contact-label">تلفن همراه</div>
+            <div class="contact-value"><a href="tel:+989333125447">۰۹۳۳-۳۱۲۵۴۴۷</a></div>
+          </div>
+        </div>
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-icon-wrap">🌐</div>
+          <div>
+            <div class="contact-label">وب‌سایت</div>
+            <div class="contact-value"><a href="https://soheilazarghami.com" target="_blank">soheilazarghami.com</a></div>
+          </div>
+        </div>
+        <div class="contact-card reveal reveal-delay-3">
+          <div class="contact-icon-wrap">🪪</div>
+          <div>
+            <div class="contact-label">شماره نظام / پروانه</div>
+            <div class="contact-value">۳۱۳۸۴ / ۸۶۲۶</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card reveal reveal-delay-1">
+        <div class="map-placeholder">
+          <div class="map-pin">📍</div>
+          <p>
+            <strong style="color: var(--text); display: block; margin-bottom: 6px;">مطب دکتر ضرغامی</strong>
+            شیراز – بلوار پاسداران
+          </p>
+        </div>
+        <div class="map-footer">
+          <p>
+            <strong>آدرس دقیق:</strong><br>
+            شیراز، بلوار پاسداران، حدفاصل کلاهدوز و فلاحی، ساختمان سارا و آیدا، طبقه ۳
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">سؤالات متداول</span>
+      <h2 class="section-title reveal">پرسش‌های رایج</h2>
+      <p class="section-desc reveal">پاسخ سؤالات متداول درباره رزرو وقت و جلسات مشاوره</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>اولین جلسه چگونه است و چقدر طول می‌کشد؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>اولین جلسه معمولاً یک جلسه ارزیابی اولیه است که حدود ۶۰ تا ۹۰ دقیقه طول می‌کشد. در این جلسه، دکتر ضرغامی با شما آشنا می‌شوند، مشکل اصلی را بررسی می‌کنند و برنامه درمانی مناسب را طرح‌ریزی می‌نمایند.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>آیا اطلاعات جلسات کاملاً محرمانه است؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>بله، تمامی اطلاعات مراجعان کاملاً محرمانه بوده و طبق اصول اخلاق حرفه‌ای روانشناسی، هیچ اطلاعاتی بدون رضایت مراجع به هیچ شخص یا نهادی منتقل نمی‌شود.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>چطور می‌توانم وقت را لغو یا تغییر دهم؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>در صورت نیاز به لغو یا تغییر وقت، حداقل ۲۴ ساعت قبل از جلسه از طریق سامانه پزشک خوب یا تماس مستقیم اقدام فرمایید. لغو کمتر از ۲۴ ساعت ممکن است مشمول هزینه شود.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-3" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>آیا برای کودکان هم جلسه جداگانه تشکیل می‌شود؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>بله، دکتر ضرغامی تخصص ویژه در روانشناسی کودکان و نوجوانان دارند. برای کودکان، معمولاً ابتدا جلسه‌ای با والدین برگزار می‌شود و سپس جلسات کودک به تناسب سن و نیاز او طراحی می‌گردد.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>آیا بیمه درمانی هزینه‌ها را پوشش می‌دهد؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>پوشش بیمه‌ای بستگی به نوع بیمه شما دارد. برخی بیمه‌های تکمیلی هزینه جلسات روانشناسی را پوشش می‌دهند. برای اطلاع دقیق، با شرکت بیمه خود مشورت فرمایید.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span>چه مدارکی برای اولین جلسه لازم است؟</span>
+          <span class="faq-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <p>برای اولین جلسه، داشتن کارت ملی کافی است. در صورت داشتن سوابق پزشکی یا روانپزشکی مرتبط (مانند پرونده‌های قبلی، نتایج آزمون‌ها یا نسخه‌های دارویی)، همراه داشتن آن‌ها می‌تواند مفید باشد.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="inline-cta reveal">
+      <p>پاسخ سؤال خود را نیافتید؟ با ما تماس بگیرید یا همین الان وقت خود را رزرو کنید.</p>
+      <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="btn-primary">
+        📅 رزرو وقت الان
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.webp" alt="لوگو" onerror="this.style.display='none'">
+      <div>
+        <div class="footer-brand-text">دکتر سهیلا ضرغامی</div>
+        <div class="footer-brand-sub">روانشناس – شیراز</div>
+      </div>
+    </div>
+    <div class="footer-info">
+      شماره نظام: ۳۱۳۸۴ | شماره پروانه: ۸۶۲۶<br>
+      عضو سازمان نظام روانشناسی و مشاوره ایران
+    </div>
+    <div class="footer-license">© تمامی حقوق محفوظ است</div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  btn.textContent = isDark ? '🌙' : '☀️';
+  document.cookie = 'theme=' + next + '; max-age=31536000; path=/; SameSite=Lax';
+}
+(function() {
+  const btn = document.getElementById('themeBtn');
+  if (btn && document.documentElement.getAttribute('data-theme') === 'dark') btn.textContent = '☀️';
+})();
+
+function toggleMobile() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var m=document.cookie.match(/(^|;)\s*theme=([^;]+)/);if(m)document.documentElement.setAttribute('data-theme',m[2]);})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دکتر ضرغامی</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#3d7d6b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="دکتر ضرغامی">
+<link rel="apple-touch-icon" href="/icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f2ee;
+    --bg2: #ede9e3;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text2: #4a4a6a;
+    --accent: #3d7d6b;
+    --accent2: #2a5c4e;
+    --accent-light: #e8f4f0;
+    --border: #d8d4ce;
+    --nav-bg: rgba(245,242,238,0.95);
+    --shadow: 0 4px 24px rgba(61,125,107,0.10);
+    --shadow-lg: 0 12px 48px rgba(61,125,107,0.15);
+    --gold: #c9a96e;
+  }
+  [data-theme="dark"] {
+    --bg: #0f1a17;
+    --bg2: #162620;
+    --card: #1a2e28;
+    --text: #e8f4f0;
+    --text2: #9dbfb5;
+    --accent: #5aab93;
+    --accent2: #3d7d6b;
+    --accent-light: #1a2e28;
+    --border: #2a4038;
+    --nav-bg: rgba(15,26,23,0.97);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+    --gold: #d4b07a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s, color 0.4s;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: background 0.4s;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 70px; gap: 20px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+  .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .nav-logo-sub { font-size: 11px; color: var(--text2); font-weight: 400; }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 4px; list-style: none;
+    flex-wrap: nowrap;
+  }
+  .nav-links a {
+    color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500;
+    padding: 8px 12px; border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--accent); background: var(--accent-light); }
+
+  /* Dropdown */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+  .chevron { font-size: 10px; transition: transform 0.3s; display: inline-block; }
+  .nav-dropdown.open .chevron { transform: rotate(180deg); }
+  .dropdown-menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; box-shadow: var(--shadow-lg);
+    min-width: 220px; padding: 8px;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: all 0.25s ease;
+    z-index: 200;
+  }
+  .nav-dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown-menu a {
+    display: block; padding: 9px 14px; border-radius: 8px;
+    font-size: 13px; color: var(--text2); text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown-menu a:hover { background: var(--accent-light); color: var(--accent); }
+
+  /* CTA button in nav */
+  .nav-cta {
+    background: var(--accent) !important; color: #fff !important;
+    border-radius: 10px !important; padding: 9px 16px !important;
+    font-weight: 600 !important; font-size: 13px !important;
+    transition: background 0.2s, transform 0.15s !important;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+  /* Theme toggle + hamburger */
+  .nav-controls { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .theme-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1.5px solid var(--border); background: var(--card);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; transition: background 0.3s, border 0.3s;
+    color: var(--text);
+  }
+  .theme-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    width: 38px; height: 38px; border-radius: 10px;
+    border: 1.5px solid var(--border); background: var(--card);
+    cursor: pointer; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .hamburger span {
+    display: block; width: 18px; height: 2px; background: var(--text);
+    border-radius: 2px; transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none;
+    position: fixed; top: 70px; right: 0; left: 0; bottom: 0;
+    background: var(--nav-bg); backdrop-filter: blur(16px);
+    z-index: 999; overflow-y: auto;
+    padding: 20px;
+    flex-direction: column; gap: 6px;
+    transform: translateX(100%); transition: transform 0.35s ease;
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav a {
+    display: block; padding: 13px 18px; border-radius: 12px;
+    color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500;
+    border: 1px solid var(--border); background: var(--card);
+    transition: background 0.2s;
+  }
+  .mobile-nav a:hover { background: var(--accent-light); color: var(--accent); }
+  .mobile-nav .sub-section { padding-right: 12px; }
+  .mobile-nav .sub-label {
+    font-size: 12px; color: var(--text2); font-weight: 600;
+    padding: 14px 8px 6px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .mobile-nav .sub-section a {
+    font-size: 13px; border: none; background: transparent;
+    padding: 9px 14px; color: var(--text2);
+  }
+  .mobile-cta {
+    background: var(--accent) !important; color: #fff !important;
+    border-color: var(--accent) !important; font-weight: 700 !important;
+    text-align: center; margin-top: 8px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 90px 24px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 20% 50%, var(--accent-light) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 60%);
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center; width: 100%; position: relative; z-index: 1;
+  }
+  .hero-text h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.25;
+    margin-bottom: 8px; color: var(--text);
+  }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 18px; color: var(--gold); font-weight: 600; margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .hero-desc { font-size: 15.5px; line-height: 2; color: var(--text2); margin-bottom: 32px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .tag {
+    padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 500;
+    background: var(--accent-light); color: var(--accent);
+    border: 1px solid rgba(61,125,107,0.2);
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 28px; border-radius: 14px; font-size: 15px; font-weight: 700;
+    background: var(--accent); color: #fff; text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(61,125,107,0.3);
+    font-family: 'Vazirmatn', sans-serif;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(61,125,107,0.4); }
+  .btn-outline {
+    padding: 14px 28px; border-radius: 14px; font-size: 15px; font-weight: 600;
+    border: 2px solid var(--accent); color: var(--accent); text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Vazirmatn', sans-serif;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; align-items: center; gap: 28px;
+  }
+  .avatar-wrap {
+    position: relative; width: 300px; height: 300px;
+  }
+  .avatar-ring {
+    position: absolute; inset: -12px; border-radius: 50%;
+    border: 2px dashed var(--accent); opacity: 0.4;
+    animation: spin 20s linear infinite;
+  }
+  .avatar-ring2 {
+    position: absolute; inset: -24px; border-radius: 50%;
+    border: 1px dashed var(--gold); opacity: 0.2;
+    animation: spin 30s linear infinite reverse;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar-img {
+    width: 100%; height: 100%; border-radius: 50%;
+    object-fit: cover; border: 4px solid var(--accent);
+    box-shadow: 0 20px 60px rgba(61,125,107,0.25);
+    position: relative; z-index: 1;
+  }
+  .avatar-badge {
+    position: absolute; bottom: 10px; left: -10px; z-index: 2;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 10px 16px;
+    box-shadow: var(--shadow); font-size: 13px; font-weight: 600;
+    color: var(--accent); white-space: nowrap;
+  }
+
+  .stat-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 18px 14px; text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .stat-num { font-size: 22px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+  .stat-lbl { font-size: 11.5px; color: var(--text2); line-height: 1.5; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 80px 24px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px; text-transform: uppercase;
+    background: var(--accent-light); padding: 6px 18px; border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--text); margin-bottom: 14px; }
+  .section-desc { font-size: 15px; color: var(--text2); max-width: 600px; margin: 0 auto; line-height: 1.9; }
+
+  /* ─── SERVICES ─── */
+  .services-bg { background: var(--bg2); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px 26px;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 4px; height: 60px; background: var(--accent);
+    border-radius: 0 20px 0 4px;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+  .service-icon { font-size: 36px; margin-bottom: 18px; }
+  .service-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+  .service-text { font-size: 13.5px; color: var(--text2); line-height: 1.9; }
+
+  /* ─── ABOUT ─── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  .about-img-wrap {
+    position: relative; border-radius: 24px; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-img-wrap img { width: 100%; display: block; }
+  .about-img-badge {
+    position: absolute; bottom: 20px; right: 20px;
+    background: var(--accent); color: #fff;
+    border-radius: 14px; padding: 12px 18px;
+    font-size: 13px; font-weight: 700; line-height: 1.4;
+  }
+  .about-content h2 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+  .about-content .subtitle { color: var(--gold); font-weight: 600; font-size: 15px; margin-bottom: 22px; }
+  .about-content p { color: var(--text2); line-height: 2; margin-bottom: 20px; font-size: 15px; }
+  .edu-list { list-style: none; }
+  .edu-list li {
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; color: var(--text2); line-height: 1.7;
+  }
+  .edu-list li:last-child { border-bottom: none; }
+  .edu-list .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    flex-shrink: 0; margin-top: 6px;
+  }
+
+  /* ─── TESTS ─── */
+  .tests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .test-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px 18px;
+    text-decoration: none; color: var(--text2);
+    transition: all 0.25s; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 14px;
+    font-size: 14px; font-weight: 500;
+  }
+  .test-card:hover {
+    background: var(--accent-light); border-color: var(--accent);
+    color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-lg);
+  }
+  .test-icon { font-size: 24px; flex-shrink: 0; }
+
+  /* ─── BOOKING ─── */
+  .booking-section { background: var(--bg2); }
+  .booking-card {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 28px; padding: 60px 48px;
+    color: #fff; text-align: center;
+    box-shadow: 0 20px 60px rgba(61,125,107,0.3);
+    position: relative; overflow: hidden;
+  }
+  .booking-card::before {
+    content: ''; position: absolute;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    top: -100px; left: -100px;
+  }
+  .booking-card::after {
+    content: ''; position: absolute;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    bottom: -60px; right: -60px;
+  }
+  .booking-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 1; }
+  .booking-card p { font-size: 15px; opacity: 0.88; margin-bottom: 36px; position: relative; z-index: 1; line-height: 1.9; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .booking-btn {
+    display: inline-block; padding: 16px 40px;
+    background: #fff; color: var(--accent2);
+    border-radius: 14px; font-size: 16px; font-weight: 800;
+    text-decoration: none; position: relative; z-index: 1;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .booking-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg2); border-top: 1px solid var(--border);
+    padding: 40px 24px 24px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); }
+  .footer-brand-text { font-size: 14px; font-weight: 700; color: var(--text); }
+  .footer-brand-sub { font-size: 12px; color: var(--text2); }
+  .footer-info { font-size: 13px; color: var(--text2); text-align: center; line-height: 1.8; }
+  .footer-license { font-size: 12px; color: var(--text2); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .avatar-wrap { width: 220px; height: 220px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .stat-cards { grid-template-columns: repeat(3,1fr); }
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 80px 16px 50px; }
+    .hero-text h1 { font-size: 1.7rem; }
+    .stat-cards { grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .stat-card { padding: 14px 8px; }
+    .stat-num { font-size: 18px; }
+    .booking-card { padding: 40px 24px; }
+    .booking-card h2 { font-size: 1.5rem; }
+    section { padding: 60px 16px; }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://soheilazarghami.com/"  class="nav-logo">
+      <img src="/logo.webp" alt="لوگو" onerror="this.style.display='none'">
+      <div>
+        <div class="nav-logo-text">دکتر سهیلا ضرغامی</div>
+        <div class="nav-logo-sub">روانشناس – شیراز</div>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown" id="testsMenu">
+        <a href="#" onclick="toggleDropdown(event,'testsMenu')">
+          تست روانشناسی <span class="chevron">▾</span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="https://mindtoolbox.ir/article/7254/تست-افسردگی-آنلاین/" target="_blank" rel="noopener">تست افسردگی بک</a>
+          <a href="https://mindtoolbox.ir/tests/ocd-ybocs/" target="_blank" rel="noopener">تست وسواس فکری ییل – براون</a>
+          <a href="https://mindtoolbox.ir/tests/mbti/" target="_blank" rel="noopener">تست شخصیت MBTI</a>
+          <a href="https://mindtoolbox.ir/article/7291/تست-آنلاین-تعهد-سازمانی/" target="_blank" rel="noopener">تست تعهد سازمانی</a>
+          <a href="https://mindtoolbox.ir/article/7246/تست-آنلاین-عشق-و-عاشقی-واقعی/" target="_blank" rel="noopener">تست عشق و عاشقی</a>
+          <a href="https://mindtoolbox.ir/article/7255/تست-سبک-های-عشقی/" target="_blank" rel="noopener">تست سبک های عشقی</a>
+          <a href="https://mindtoolbox.ir/article/7247/سبک-دلبستگی-شما-چیست/" target="_blank" rel="noopener">تست سبک دلبستگی</a>
+          <a href="https://mindtoolbox.ir/article/15054/تست-هوش-بزرگسالان-ریون-آنلاین-رایگان/" target="_blank" rel="noopener">تست هوش ریون بزرگسالان</a>
+          <a href="https://mindtoolbox.ir/tests/children-adhd-cprs/" target="_blank" rel="noopener">تست بیش فعالی کودکان</a>
+          <a href="https://mindtoolbox.ir/tests/caars/" target="_blank" rel="noopener">تست ADHD</a>
+          <a href="http://tools.saeedsun.ir/MMPI2.html" target="_blank" rel="noopener">MMPI-2</a>
+        </div>
+      </div>
+      <a href="reserve.html">رزرو وقت</a>
+      <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="nav-cta">رزرو وقت حضوری</a>
+    </div>
+
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="تغییر تم" id="themeBtn">🌙</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="منو">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="https://soheilazarghami.com/" target="_blank" rel="noopener">🏠 خانه</a>
+  <div class="sub-section">
+    <div class="sub-label">🧪 تست روانشناسی</div>
+    <a href="https://mindtoolbox.ir/article/7254/تست-افسردگی-آنلاین/" target="_blank" rel="noopener">تست افسردگی بک</a>
+    <a href="https://mindtoolbox.ir/tests/ocd-ybocs/" target="_blank" rel="noopener">تست وسواس فکری ییل – براون</a>
+    <a href="https://mindtoolbox.ir/tests/mbti/" target="_blank" rel="noopener">تست شخصیت MBTI</a>
+    <a href="https://mindtoolbox.ir/article/7291/تست-آنلاین-تعهد-سازمانی/" target="_blank" rel="noopener">تست تعهد سازمانی</a>
+    <a href="https://mindtoolbox.ir/article/7246/تست-آنلاین-عشق-و-عاشقی-واقعی/" target="_blank" rel="noopener">تست عشق و عاشقی</a>
+    <a href="https://mindtoolbox.ir/article/7255/تست-سبک-های-عشقی/" target="_blank" rel="noopener">تست سبک های عشقی</a>
+    <a href="https://mindtoolbox.ir/article/7247/سبک-دلبستگی-شما-چیست/" target="_blank" rel="noopener">تست سبک دلبستگی</a>
+    <a href="https://mindtoolbox.ir/article/15054/تست-هوش-بزرگسالان-ریون-آنلاین-رایگان/" target="_blank" rel="noopener">تست هوش ریون بزرگسالان</a>
+    <a href="https://mindtoolbox.ir/tests/children-adhd-cprs/" target="_blank" rel="noopener">تست بیش فعالی کودکان</a>
+    <a href="https://mindtoolbox.ir/tests/caars/" target="_blank" rel="noopener">تست ADHD</a>
+    <a href="http://tools.saeedsun.ir/MMPI2.html" target="_blank" rel="noopener">MMPI-2</a>
+  </div>
+  <a href="reserve.html">📅 رزرو وقت</a>
+  <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="mobile-cta">📅 رزرو وقت حضوری</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner container">
+    <div class="hero-text">
+      <div class="section-eyebrow reveal">روانشناس متخصص – شیراز</div>
+      <h1 class="reveal reveal-delay-1">دکتر <span>سهیلا</span><br>ضرغامی</h1>
+      <div class="hero-sub reveal reveal-delay-2">دکترای تخصصی روانشناسی</div>
+      <p class="hero-desc reveal reveal-delay-2">
+        درمانگر اختصاصی وسواس فکری – عملی کودکان، نوجوانان و بزرگسالان<br>
+        با رویکرد شناختی – رفتاری (CBT)
+      </p>
+      <div class="hero-tags reveal reveal-delay-2">
+        <span class="tag">CBT</span>
+        <span class="tag">وسواس OCD</span>
+        <span class="tag">اختلالات کودکان</span>
+        <span class="tag">طرحواره‌درمانی</span>
+        <span class="tag">هیپنوتیزم شناختی</span>
+      </div>
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" class="btn-primary">رزرو وقت حضوری</a>
+        <a href="#about" class="btn-outline">بیشتر بدانید</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-delay-1">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring2"></div>
+        <img src="/image.webp" alt="دکتر سهیلا ضرغامی" class="avatar-img">
+        <!-- <div class="avatar-badge">🏅 شماره نظام ۳۱۳۸۴</div> -->
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat-card reveal">
+          <div class="stat-num">CBT</div>
+          <div class="stat-lbl">رویکرد شناختی رفتاری</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-num">OCD</div>
+          <div class="stat-lbl">متخصص درمان وسواس</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-num">دکترا</div>
+          <div class="stat-lbl">تخصصی روانشناسی</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-bg" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">خدمات تخصصی</span>
+      <h2 class="section-title reveal">حوزه‌های تخصص</h2>
+      <p class="section-desc reveal">با بهره‌گیری از جدیدترین رویکردهای درمانی، در کنار شما هستم</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🧠</div>
+        <div class="service-name">درمان وسواس فکری – عملی (OCD)</div>
+        <p class="service-text">درمانگر اختصاصی OCD با رویکرد CBT برای کودکان، نوجوانان و بزرگسالان</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">👶</div>
+        <div class="service-name">روانشناسی کودکان استثنایی</div>
+        <p class="service-text">تخصص در ارزیابی و درمان کودکان با نیازهای ویژه، اختلالات یادگیری و ADHD</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">📊</div>
+        <div class="service-name">آزمون‌های روانشناختی</div>
+        <p class="service-text">اجرا و تفسیر آزمون‌های هوش وکسلر، استنفورد بینه، بندرگشتالت و سایر آزمون‌ها</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💡</div>
+        <div class="service-name">طرحواره‌درمانی</div>
+        <p class="service-text">کاربرد طرحواره‌درمانی در خانواده و کار روی ذهنیت‌ها برای بهبود روابط</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">🌿</div>
+        <div class="service-name">کنترل استرس و هیجانات</div>
+        <p class="service-text">آموزش مهارت‌های تنظیم هیجان، کنترل خشم و مدیریت استرس روزمره</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🔮</div>
+        <div class="service-name">هیپنوتیزم شناختی</div>
+        <p class="service-text">استفاده از تکنیک‌های هیپنوتیزم شناختی در کنار رویکردهای درمانی مدرن</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="/image.webp" alt="دکتر سهیلا ضرغامی">
+        <div class="about-img-badge">عضو سازمان نظام<br>روانشناسی ایران</div>
+      </div>
+      <div class="about-content">
+        <span class="section-eyebrow reveal">درباره من</span>
+        <h2 class="reveal">دکتر سهیلا ضرغامی</h2>
+        <div class="subtitle reveal">روانشناس و درمانگر متخصص – شیراز</div>
+        <p class="reveal">
+          با سال‌ها تجربه در حوزه روانشناسی بالینی و آموزش کودکان با نیازهای ویژه، 
+          تلاش می‌کنم با رویکردی علمی و انسانی، همراه مراجعان در مسیر بهبود باشم.
+        </p>
+        <ul class="edu-list reveal">
+          <li><span class="dot"></span> دکترای تخصصی روانشناسی و آموزش کودکان با نیازهای ویژه</li>
+          <li><span class="dot"></span> کارشناسی ارشد روانشناسی کودکان با نیازهای ویژه</li>
+          <li><span class="dot"></span> کارشناسی روانشناسی عمومی</li>
+          <li><span class="dot"></span> مربی درمانگر اختلالات یادگیری</li>
+          <li><span class="dot"></span> مؤلف کتاب «نقش فرزندپروری بر کاهش اضطراب ریاضی»</li>
+          <li><span class="dot"></span> عضو انجمن علمی کودکان استثنایی ایران</li>
+          <li><span class="dot"></span> شماره نظام: ۳۱۳۸۴ | شماره پروانه: ۸۶۲۶</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTS ─── -->
+<section class="services-bg" id="tests">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow reveal">آنلاین و رایگان</span>
+      <h2 class="section-title reveal">تست‌های روانشناسی</h2>
+      <p class="section-desc reveal">با این تست‌های معتبر، شناخت بهتری از خودتان به دست بیاورید</p>
+    </div>
+    <div class="tests-grid">
+      <a href="https://mindtoolbox.ir/article/7254/تست-افسردگی-آنلاین/" target="_blank" rel="noopener" class="test-card reveal">
+        <span class="test-icon">😔</span> تست افسردگی بک
+      </a>
+      <a href="https://mindtoolbox.ir/tests/ocd-ybocs/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-1">
+        <span class="test-icon">🔄</span> تست وسواس فکری ییل – براون
+      </a>
+      <a href="https://mindtoolbox.ir/tests/mbti/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-2">
+        <span class="test-icon">🧩</span> تست شخصیت MBTI
+      </a>
+      <a href="https://mindtoolbox.ir/article/7291/تست-آنلاین-تعهد-سازمانی/" target="_blank" rel="noopener" class="test-card reveal">
+        <span class="test-icon">🏢</span> تست تعهد سازمانی
+      </a>
+      <a href="https://mindtoolbox.ir/article/7246/تست-آنلاین-عشق-و-عاشقی-واقعی/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-1">
+        <span class="test-icon">❤️</span> تست عشق و عاشقی
+      </a>
+      <a href="https://mindtoolbox.ir/article/7255/تست-سبک-های-عشقی/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-2">
+        <span class="test-icon">💑</span> تست سبک‌های عشقی
+      </a>
+      <a href="https://mindtoolbox.ir/article/7247/سبک-دلبستگی-شما-چیست/" target="_blank" rel="noopener" class="test-card reveal">
+        <span class="test-icon">🔗</span> تست سبک دلبستگی
+      </a>
+      <a href="https://mindtoolbox.ir/article/15054/تست-هوش-بزرگسالان-ریون-آنلاین-رایگان/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-1">
+        <span class="test-icon">🧠</span> تست هوش ریون بزرگسالان
+      </a>
+      <a href="https://mindtoolbox.ir/tests/children-adhd-cprs/" target="_blank" rel="noopener" class="test-card reveal reveal-delay-2">
+        <span class="test-icon">👦</span> تست بیش‌فعالی کودکان
+      </a>
+      <a href="https://mindtoolbox.ir/tests/caars/" target="_blank" rel="noopener" class="test-card reveal">
+        <span class="test-icon">⚡</span> تست ADHD
+      </a>
+      <a href="http://tools.saeedsun.ir/MMPI2.html" target="_blank" rel="noopener" class="test-card reveal reveal-delay-1">
+        <span class="test-icon">📋</span> MMPI-2
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKING CTA ─── -->
+<section class="booking-section" id="booking">
+  <div class="container">
+    <div class="booking-card reveal">
+      <h2>همین الان وقت بگیرید</h2>
+      <p>
+        برای دریافت مشاوره حضوری با دکتر سهیلا ضرغامی، از طریق سایت پزشک خوب 
+        وقت خود را رزرو کنید. جلسات در محیطی امن و محرمانه برگزار می‌شوند.
+      </p>
+      <a href="https://pezeshkekhoob.com/doctor/49147-soheila-zarghami#in_person_offices_header" target="_blank" rel="noopener" class="booking-btn">
+        📅 رزرو وقت حضوری
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.webp" alt="لوگو" onerror="this.style.display='none'">
+      <div>
+        <div class="footer-brand-text">دکتر سهیلا ضرغامی</div>
+        <div class="footer-brand-sub">روانشناس – شیراز</div>
+      </div>
+    </div>
+    <div class="footer-info">
+      شماره نظام: ۳۱۳۸۴ | شماره پروانه: ۸۶۲۶<br>
+      عضو سازمان نظام روانشناسی و مشاوره ایران
+    </div>
+    <div class="footer-license">© تمامی حقوق محفوظ است</div>
+  </div>
+</footer>
+
+<script>
+// Theme Toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  btn.textContent = isDark ? '🌙' : '☀️';
+  document.cookie = 'theme=' + next + '; max-age=31536000; path=/; SameSite=Lax';
+}
+(function() {
+  const btn = document.getElementById('themeBtn');
+  if (btn && document.documentElement.getAttribute('data-theme') === 'dark') btn.textContent = '☀️';
+})();
+
+// Dropdown
+function toggleDropdown(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  document.addEventListener('click', function handler(ev) {
+    if (!el.contains(ev.target)) { el.classList.remove('open'); document.removeEventListener('click', handler); }
+  });
+}
+
+// Mobile Nav
+function toggleMobile() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+
+// PWA Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
+// Scroll Reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
