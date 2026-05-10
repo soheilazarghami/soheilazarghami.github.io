@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Dr. Soheila Zarghami</title>
+  <meta name="description" content="Privacy Policy for Dr. Soheila Zarghami's psychology website – how we collect, use, and protect your personal data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-dark:  #2a5c4e;
+      --green-mid:   #3d7d6b;
+      --green-light: #5a9e8a;
+      --green-pale:  #e8f4f1;
+      --gold:        #c9a84c;
+      --text:        #1c2b27;
+      --muted:       #5a6e68;
+      --border:      #c7ddd8;
+      --bg:          #f7faf9;
+      --white:       #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: var(--green-mid);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      line-height: 1.2;
+    }
+
+    .logo-sub {
+      font-size: .7rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: .03em;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    nav a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 500;
+      opacity: .75;
+      transition: opacity .2s;
+    }
+    nav a:hover { opacity: 1; }
+
+    /* ── HERO BAND ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-light) 100%);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: .75rem;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: .95rem;
+      opacity: .8;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-meta {
+      margin-top: 1.75rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta span {
+      font-size: .78rem;
+      opacity: .7;
+      letter-spacing: .04em;
+    }
+
+    .hero-meta strong { opacity: 1; font-weight: 500; }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+    /* Table of Contents */
+    .toc {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green-mid);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .toc h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: .9rem;
+    }
+
+    .toc ol {
+      padding-left: 1.2rem;
+      display: grid;
+      gap: .35rem;
+    }
+
+    .toc a {
+      color: var(--green-mid);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .toc a:hover { color: var(--green-dark); }
+
+    /* Sections */
+    .section {
+      margin-bottom: 2.75rem;
+      scroll-margin-top: 90px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-icon {
+      width: 40px; height: 40px;
+      background: var(--green-pale);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.25;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: .915rem;
+      margin-bottom: .75rem;
+    }
+
+    .section ul, .section ol {
+      padding-left: 1.3rem;
+      color: var(--muted);
+      font-size: .915rem;
+      display: grid;
+      gap: .4rem;
+      margin-bottom: .75rem;
+    }
+
+    .section li::marker { color: var(--green-mid); }
+
+    /* Info cards */
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .card-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--green-light);
+      font-weight: 600;
+      margin-bottom: .35rem;
+    }
+
+    .card-value {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--green-pale);
+      border-left: 3px solid var(--green-mid);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: .875rem;
+      color: var(--green-dark);
+    }
+
+    /* Divider */
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* Contact block */
+    .contact-block {
+      background: var(--green-dark);
+      color: #fff;
+      border-radius: 14px;
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .contact-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .contact-block p {
+      font-size: .875rem;
+      opacity: .8;
+      margin: 0;
+      color: #fff;
+    }
+
+    .contact-block a {
+      color: #a8d8cc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--green-mid); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://soheilazarghami.com/" class="logo">
+    <div class="logo-mark">SZ</div>
+    <div>
+      <div class="logo-text">Dr. Soheila Zarghami</div>
+      <div class="logo-sub">Psychologist · Shiraz</div>
+    </div>
+  </a>
+  <nav>
+    <a href="https://soheilazarghami.com/">← Back to Home</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🔒 Legal &amp; Privacy</div>
+  <h1>Privacy Policy</h1>
+  <p>We are committed to protecting your personal information and your right to privacy. This policy explains how we collect, use, and safeguard your data.</p>
+  <div class="hero-meta">
+    <span><strong>Effective Date:</strong> January 1, 2025</span>
+    <span><strong>Last Updated:</strong> May 2025</span>
+    <span><strong>Version:</strong> 1.0</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="wrapper">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>📋 Table of Contents</h2>
+    <ol>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#data-collected">Information We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Your Information</a></li>
+      <li><a href="#tests">Psychological Tests &amp; Results</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#sharing">Sharing Your Data</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#security">Data Security</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <div class="section" id="who-we-are">
+    <div class="section-header">
+      <div class="section-icon">🏛️</div>
+      <h2>1. Who We Are</h2>
+    </div>
+    <p>This Privacy Policy applies to the website <strong>soheilazarghami.com</strong>, operated by <strong>Dr. Soheila Zarghami</strong>, a licensed clinical psychologist based in Shiraz, Iran.</p>
+    <div class="card-row">
+      <div class="card">
+        <div class="card-label">Data Controller</div>
+        <div class="card-value">Dr. Soheila Zarghami</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Professional License</div>
+        <div class="card-value">License No. 31384 · Permit No. 8626</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Website</div>
+        <div class="card-value">soheilazarghami.com</div>
+      </div>
+    </div>
+    <p>By using our website, you acknowledge that you have read and understood this Privacy Policy.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 2 -->
+  <div class="section" id="data-collected">
+    <div class="section-header">
+      <div class="section-icon">📂</div>
+      <h2>2. Information We Collect</h2>
+    </div>
+    <p>We collect information in the following ways:</p>
+
+    <p><strong>Information you provide directly:</strong></p>
+    <ul>
+      <li>Name and email address when registering or contacting us</li>
+      <li>Answers you submit in psychological assessment tests</li>
+      <li>Messages sent via the contact form</li>
+      <li>Appointment booking details</li>
+    </ul>
+
+    <p><strong>Information collected automatically:</strong></p>
+    <ul>
+      <li>IP address and general geographic region</li>
+      <li>Browser type and device information</li>
+      <li>Pages visited and time spent on the site</li>
+      <li>Referral sources (how you arrived at our site)</li>
+    </ul>
+
+    <div class="highlight">
+      ℹ️ We do <strong>not</strong> collect sensitive financial information such as credit card numbers directly on this website.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 3 -->
+  <div class="section" id="how-we-use">
+    <div class="section-header">
+      <div class="section-icon">⚙️</div>
+      <h2>3. How We Use Your Information</h2>
+    </div>
+    <p>We use collected data for the following purposes:</p>
+    <ul>
+      <li>To provide and display your psychological test results</li>
+      <li>To manage your user account (if registered)</li>
+      <li>To respond to inquiries and support requests</li>
+      <li>To schedule and manage consultation appointments</li>
+      <li>To improve the website's content, usability, and performance</li>
+      <li>To send important service-related notifications (not marketing spam)</li>
+      <li>To comply with legal obligations</li>
+    </ul>
+    <p>We process your personal data only when we have a lawful basis to do so, such as your consent, performance of a contract, or our legitimate interests.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 4 -->
+  <div class="section" id="tests">
+    <div class="section-header">
+      <div class="section-icon">🧠</div>
+      <h2>4. Psychological Tests &amp; Results</h2>
+    </div>
+    <p>Our website offers a variety of free psychological self-assessment tests. Please be aware of the following:</p>
+    <ul>
+      <li>Test responses and computed scores may be stored to display your results.</li>
+      <li>Results are shown only to you and are <strong>not shared with third parties</strong> for commercial purposes.</li>
+      <li>The tests are <strong>for educational and self-awareness purposes only</strong> and do not constitute a clinical diagnosis.</li>
+      <li>If you are registered and logged in, your test history may be saved to your account.</li>
+      <li>Anonymous test sessions may use temporary session data that is not permanently stored.</li>
+    </ul>
+    <div class="highlight">
+      ⚠️ <strong>Important:</strong> Psychological test results on this website are informational tools, not professional clinical assessments. Please consult a qualified psychologist for any health concerns.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 5 -->
+  <div class="section" id="cookies">
+    <div class="section-header">
+      <div class="section-icon">🍪</div>
+      <h2>5. Cookies &amp; Tracking</h2>
+    </div>
+    <p>Our website uses cookies — small text files stored on your device — to enhance your experience. Types of cookies we use:</p>
+    <ul>
+      <li><strong>Essential cookies:</strong> Required for core website functions such as login sessions and CSRF protection.</li>
+      <li><strong>Preference cookies:</strong> Remember your settings (e.g., dark mode preference).</li>
+      <li><strong>Analytics cookies:</strong> Help us understand how visitors use the site so we can improve it.</li>
+    </ul>
+    <p>You can disable cookies through your browser settings, though some features may not work correctly without them.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 6 -->
+  <div class="section" id="sharing">
+    <div class="section-header">
+      <div class="section-icon">🤝</div>
+      <h2>6. Sharing Your Data</h2>
+    </div>
+    <p>We do <strong>not sell</strong> your personal information. We may share data only in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Service providers:</strong> Trusted third-party services that help us operate the website (e.g., hosting, booking platforms like Ravandarman.com) under strict confidentiality agreements.</li>
+      <li><strong>Legal requirements:</strong> If required by law, court order, or governmental authority.</li>
+      <li><strong>Protection of rights:</strong> To protect the safety, rights, or property of our users or the public.</li>
+    </ul>
+    <p>Any third-party service providers we use are required to process your data solely for the purposes we specify.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 7 -->
+  <div class="section" id="retention">
+    <div class="section-header">
+      <div class="section-icon">🗂️</div>
+      <h2>7. Data Retention</h2>
+    </div>
+    <p>We retain your personal data only for as long as necessary to fulfill the purposes described in this policy:</p>
+    <ul>
+      <li>Account information is kept for the duration of your account, plus a reasonable period after deletion.</li>
+      <li>Test results are retained as long as you maintain an active account.</li>
+      <li>Contact form messages are kept for up to 12 months.</li>
+      <li>Server logs are typically retained for 90 days for security purposes.</li>
+    </ul>
+    <p>You may request deletion of your data at any time by contacting us.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 8 -->
+  <div class="section" id="security">
+    <div class="section-header">
+      <div class="section-icon">🔐</div>
+      <h2>8. Data Security</h2>
+    </div>
+    <p>We take the security of your data seriously and implement appropriate technical and organizational measures, including:</p>
+    <ul>
+      <li>HTTPS encryption for all data transmitted between your browser and our servers</li>
+      <li>Secure password hashing for user accounts</li>
+      <li>CSRF token protection on forms</li>
+      <li>Regular security reviews of our systems</li>
+    </ul>
+    <p>However, no method of transmission over the internet is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 9 -->
+  <div class="section" id="your-rights">
+    <div class="section-header">
+      <div class="section-icon">⚖️</div>
+      <h2>9. Your Rights</h2>
+    </div>
+    <p>Depending on your location, you may have certain rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the data we hold about you.</li>
+      <li><strong>Correction:</strong> Ask us to correct inaccurate or incomplete data.</li>
+      <li><strong>Deletion:</strong> Request that we delete your personal data ("right to be forgotten").</li>
+      <li><strong>Portability:</strong> Receive your data in a portable, machine-readable format.</li>
+      <li><strong>Objection:</strong> Object to our processing of your data in certain circumstances.</li>
+      <li><strong>Withdraw consent:</strong> Withdraw consent at any time where processing is based on consent.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us using the details in Section 12.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 10 -->
+  <div class="section" id="children">
+    <div class="section-header">
+      <div class="section-icon">👶</div>
+      <h2>10. Children's Privacy</h2>
+    </div>
+    <p>Our website is intended for users aged <strong>13 and above</strong>. We do not knowingly collect personal data from children under 13 without verifiable parental consent.</p>
+    <p>Some tests on our website are specifically designed to be completed by a parent or guardian on behalf of their child. In those cases, it is the parent's data — not the child's — that is processed.</p>
+    <p>If you believe a child under 13 has provided us with personal information, please contact us immediately so we can remove it.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 11 -->
+  <div class="section" id="changes">
+    <div class="section-header">
+      <div class="section-icon">🔄</div>
+      <h2>11. Changes to This Policy</h2>
+    </div>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. When we make material changes, we will:</p>
+    <ul>
+      <li>Update the "Last Updated" date at the top of this page</li>
+      <li>Post a notice on the website where appropriate</li>
+    </ul>
+    <p>We encourage you to review this page periodically. Your continued use of the website after any changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- 12 -->
+  <div class="section" id="contact">
+    <div class="section-header">
+      <div class="section-icon">📬</div>
+      <h2>12. Contact Us</h2>
+    </div>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out to us:</p>
+    <div class="contact-block">
+      <h3>Dr. Soheila Zarghami</h3>
+      <p>Clinical Psychologist · Shiraz, Iran</p>
+      <p>🌐 Website: <a href="https://soheilazarghami.com/contact.php">soheilazarghami.com/contact.php</a></p>
+      <p>📸 Instagram: <a href="https://www.instagram.com/phd_psy__soheila.zarghami/">@phd_psy__soheila.zarghami</a></p>
+      <p>📅 Appointments: <a href="https://ravandarman.com/doctor/49147-soheila-zarghami">ravandarman.com</a></p>
+      <p style="margin-top:.5rem; font-size:.8rem; opacity:.6;">We aim to respond to all inquiries within 5 business days.</p>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Dr. Soheila Zarghami · All rights reserved · <a href="https://soheilazarghami.com/">soheilazarghami.com</a></p>
+  <p style="margin-top:.4rem;">License No. 31384 | Member of the Iranian Psychological Association</p>
+</footer>
+
+</body>
+</html>
